@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Almoxarifado</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+      background: linear-gradient(-45deg, #1a1a1a, #333, #00c3ff, #0099cc);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.9);
+      color: white;
+      padding: 5px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      height: 60px;
+      z-index: 1000;
+    }
+
+    .logo-small {
+      height: 50px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s;
+    }
+
+    .logo-small:hover {
+      transform: scale(1.1);
+    }
+
+    .sidebar-left {
+      position: fixed;
+      top: 60px;
+      left: -220px;
+      width: 220px;
+      height: calc(100% - 60px);
+      background: rgba(21, 21, 21, 0.85);
+      backdrop-filter: blur(6px);
+      box-shadow: 2px 0 12px rgba(0,0,0,0.8);
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      transition: left 0.4s ease;
+    }
+
+    .sidebar-left:hover {
+      left: 0;
+    }
+
+    .sidebar-left h2 {
+      font-size: 20px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #00c3ff;
+    }
+
+    .sidebar-left a {
+      color: #fefefe;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+
+    .sidebar-left a:hover {
+      background: linear-gradient(90deg, rgba(0,195,255,0.2), rgba(0,195,255,0.4));
+      color: #00c3ff;
+      transform: translateX(8px);
+      box-shadow: 0 0 10px #00c3ff;
+    }
+
+    .sidebar-left a + a {
+      margin-top: 20px;
+    }
+
+    .main-content {
+      margin-top: 120px;
+      text-align: center;
+    }
+
+    .main-content h1 {
+      font-size: 65px;
+      text-shadow: 0 0 15px #00c3ff, 3px 3px 8px black;
+      margin-bottom: 40px;
+      letter-spacing: 3px;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00c3ff, 3px 3px 8px black; }
+      to { text-shadow: 0 0 25px #00ffcc, 3px 3px 12px black; }
+    }
+
+    .logo-center {
+      width: 600px;
+      height: auto;
+      filter: drop-shadow(0 0 40px rgba(0,255,255,0.9));
+      animation: pulse 4s infinite ease-in-out;
+      transition: transform 0.3s;
+    }
+
+    .logo-center:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 60px rgba(0,255,255,1));
+    }
+
+    @keyframes pulse {
+      0% { filter: drop-shadow(0 0 30px rgba(0,255,255,0.7)); }
+      50% { filter: drop-shadow(0 0 60px rgba(0,255,255,1)); }
+      100% { filter: drop-shadow(0 0 30px rgba(0,255,255,0.7)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <img class="logo-small" src="https://intralogexpo.com.br/wp-content/webp-express/webp-images/uploads/2024/02/INTRALOG-LOGOS.png.webp" alt="Logo">
+  </div>
+
+  <div class="sidebar-left">
+    <h2>Menu</h2>
+    <a href="formulario.html" target="_blank" rel="noopener noreferrer">📄 Formulário</a>
+    <a href="login.html" target="_blank" rel="noopener noreferrer">📍 Endereços</a>
+    <a href="sugestoes.html" target="_blank" rel="noopener noreferrer">📖 Sugestões</a>
+  </div>
+
+  <div class="main-content">
+    <h1>Águia Sistemas</h1>
+    <img class="logo-center" src="https://intralogexpo.com.br/wp-content/webp-express/webp-images/uploads/2024/02/INTRALOG-LOGOS.png.webp" alt="Logo Intralog">
+  </div>
+</body>
+</html>

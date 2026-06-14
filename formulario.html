@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            background: linear-gradient(-45deg, #1a1a1a, #333, #00c3ff, #0099cc);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px #00c3ff, 2px 2px 6px black;
+            font-size: 42px;
+            letter-spacing: 2px;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00c3ff, 2px 2px 6px black; }
+            to { text-shadow: 0 0 25px #00ffcc, 2px 2px 10px black; }
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.7);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+            backdrop-filter: blur(6px);
+            z-index: 2;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            background: #222;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 12px #00c3ff;
+            background: #111;
+        }
+
+        button {
+            background: linear-gradient(90deg, #00c3ff, #0099cc);
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00c3ff;
+        }
+
+        .mensagem {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #00ff99;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .mensagem.show {
+            opacity: 1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 300px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(0,255,255,0.8));
+            z-index: 10;
+        }
+
+        #dadosSalvos {
+            max-width: 500px;
+            margin: 20px auto;
+            background: rgba(0,0,0,0.6);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        #dadosSalvos h2 {
+            color: #00ffcc;
+            margin-bottom: 10px;
+        }
+
+        #listaDados li {
+            margin: 5px 0;
+            padding: 8px;
+            background: #111;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://intralogexpo.com.br/wp-content/webp-express/webp-images/uploads/2024/02/INTRALOG-LOGOS.png.webp" 
+         alt="Logo Intralog" class="logo">
+
+    <h1>Formulário</h1>
+   <form id="meuFormulario" 
+         action="https://script.google.com/macros/s/AKfycbyJI6Qk2axxdiOhnQC3H4uVBmm-KmbRckIeQj0Qtns_WB8QfFaP9Mez0KxSYVTpYKjtrg/exec" 
+         method="POST">
+   <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" 
+           required maxlength="20" 
+           pattern="[A-Za-zÀ-ÿ\s]{1,20}" 
+           oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g,'');">
+
+     <label for="peca">Peça:</label>
+    <input type="text" id="peca" name="peca" 
+           required maxlength="20" 
+           pattern="[A-Za-zÀ-ÿ\s]{1,20}" 
+           oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g,'');">
+
+    <label for="item">Item:</label>
+    <input type="number" id="item" name="item" 
+           required min="0" max="999999" 
+           oninput="if(this.value.length > 6) this.value = this.value.slice(0,6);">
+
+    <label for="quantidade">Quantidade:</label>
+    <input type="number" id="quantidade" name="quantidade" 
+           required min="0" max="9999" 
+           oninput="if(this.value.length > 4) this.value = this.value.slice(0,4);">
+
+    <label for="estabelecimento">Estabelecimento:</label>
+    <select id="estabelecimento" name="estabelecimento" required>
+        <option value="">Selecione...</option>
+        <option value="wae">WAE</option>
+        <option value="wam">WAM</option>
+        <option value="wac">WAC</option>
+        <option value="was">WAS</option>
+        <option value="ald">ALD</option>
+    </select>
+
+    <!-- Botão Salvar -->
+    <button type="button" id="salvarBtn">Salvar</button>
+    <!-- Botão Enviar -->
+    <button type="button" id="enviarBtn">Enviar</button>
+</form>
+
+<div id="dadosSalvos">
+    <h2>Dados salvos</h2>
+    <ul id="listaDados"></ul>
+</div>
+
+<div class="mensagem" id="mensagem"></div>
+
+<script>
+    const form = document.getElementById("meuFormulario");
+    const mensagem = document.getElementById("mensagem");
+    const salvarBtn = document.getElementById("salvarBtn");
+    const enviarBtn = document.getElementById("enviarBtn");
+    const listaDados = document.getElementById("listaDados");
+    let registros = [];
+
+    // Botão Salvar
+    salvarBtn.addEventListener("click", function() {
+        if (registros.length >= 15) {
+            mensagem.textContent = "⚠️ Limite de 15 itens atingido.";
+            return;
+        }
+
+        const dados = {
+            nome: document.getElementById("nome").value,
+            peca: document.getElementById("peca").value,
+            item: document.getElementById("item").value,
+            quantidade: document.getElementById("quantidade").value,
+            estabelecimento: document.getElementById("estabelecimento").value
+        };
+
+        if (dados.nome && dados.peca && dados.item && dados.quantidade && dados.estabelecimento) {
+            registros.push(dados);
+
+            const li = document.createElement("li");
+            li.textContent = `${dados.nome} - ${dados.peca} - ${dados.item} - ${dados.quantidade} - ${dados.estabelecimento}`;
+
+            const btnExcluir = document.createElement("span");
+            btnExcluir.textContent = " ❌";
+            btnExcluir.style.cursor = "pointer";
+            btnExcluir.style.color = "red";
+            btnExcluir.addEventListener("click", function() {
+                registros = registros.filter(r => r !== dados);
+                li.remove();
+                mensagem.textContent = "🗑️ Item removido!";
+            });
+
+            li.appendChild(btnExcluir);
+            listaDados.appendChild(li);
+
+            mensagem.textContent = "💾 Dados salvos!";
+            form.reset();
+        } else {
+            mensagem.textContent = "⚠️ Preencha todos os campos.";
+        }
+    });
+
+    // Botão Enviar
+    enviarBtn.addEventListener("click", function() {
+        // verifica bloqueio
+        const bloqueio = localStorage.getItem("bloqueioEnvio");
+        if (bloqueio && Date.now() < parseInt(bloqueio)) {
+            iniciarContagem(parseInt(bloqueio));
+            return;
+        }
+
+        if (registros.length === 0) {
+            mensagem.textContent = "⚠️ Nenhum dado para enviar.";
+            return;
+        }
+
+        Promise.all(registros.map(dados => {
+            return fetch(form.action, {
+                method: "POST",
+                body: new URLSearchParams(dados)
+            });
+        }))
+        .then(responses => {
+    if (responses.every(r => r.ok)) {
+        mensagem.textContent = "✅ Dados enviados para a planilha!";
+        registros = [];
+        listaDados.innerHTML = "";
+        form.reset();
+
+        // Bloqueio de 5 minutos
+        const tempoLimite = Date.now() + 5 * 60 * 1000;
+        localStorage.setItem("bloqueioEnvio", tempoLimite);
+
+        // inicia cronômetro no botão Enviar
+        iniciarContagem(tempoLimite);
+    } else {
+        mensagem.textContent = "❌ Erro ao enviar.";
+    }
+})
+.catch(() => {
+    mensagem.textContent = "❌ Erro de conexão.";
+});
+});
+
+// Envio do formulário (enter)
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    enviarBtn.click();
+});
+
+// Se já existe bloqueio ao carregar a página, inicia contagem
+window.addEventListener("load", () => {
+    const bloqueio = localStorage.getItem("bloqueioEnvio");
+    if (bloqueio && Date.now() < parseInt(bloqueio)) {
+        iniciarContagem(parseInt(bloqueio));
+    }
+});
+
+// Função para iniciar contagem regressiva no botão
+function iniciarContagem(tempoLimite) {
+    const intervalo = setInterval(() => {
+        const restante = tempoLimite - Date.now();
+        if (restante <= 0) {
+            clearInterval(intervalo);
+            enviarBtn.disabled = false;
+            enviarBtn.textContent = "Enviar";
+            localStorage.removeItem("bloqueioEnvio");
+        } else {
+            enviarBtn.disabled = true;
+            const minutos = Math.floor(restante / 60000);
+            const segundos = Math.floor((restante % 60000) / 1000);
+            enviarBtn.textContent = `Enviar (${minutos}:${segundos.toString().padStart(2,"0")})`;
+        }
+    }, 1000);
+}
+
+</script>
+</body>
+</html>
