@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Águia Sistemas</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="top-bar">
+    <h1 class="titulo-topo">Águia Sistemas</h1>
+    <div class="glow-effect"></div>
+  </div>
+
+  <div class="container container-login">
+    <div class="header-section">
+      <h2 class="titulo-principal">Login</h2>
+    </div>
+
+    <!-- LOGIN -->
+    <form id="formLogin" class="card-form" autocomplete="off">
+      <div class="campo">
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" class="input-campo" placeholder="Digite seu usuário" required />
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <div class="campo-senha-wrapper">
+          <input type="password" id="senha" class="input-campo input-senha" placeholder="Digite sua senha" required />
+          <button type="button" id="btnToggleSenha" class="btn-olho" title="Mostrar/ocultar senha">👁️</button>
+        </div>
+      </div>
+
+      <label class="campo-checkbox">
+        <input type="checkbox" id="lembrar" class="checkbox-lembrar" />
+        Lembrar usuário neste dispositivo
+      </label>
+
+      <p id="infoTentativas" class="info-tentativas"></p>
+
+      <button type="submit" id="btnEntrar" class="btn-enviar">
+        <span class="icon-send"></span>
+        <span class="loader"></span>
+        Entrar
+      </button>
+
+      <button type="button" id="btnMostrarTrocaSenha" class="btn-link">
+        Trocar senha
+      </button>
+    </form>
+
+    <!-- TROCA DE SENHA -->
+    <form id="formTrocaSenha" class="card-form card-oculto" autocomplete="off">
+      <div class="campo">
+        <label for="usuarioTroca">Usuário</label>
+        <input type="text" id="usuarioTroca" class="input-campo" required />
+      </div>
+
+      <div class="campo">
+        <label for="senhaAtual">Senha atual</label>
+        <input type="password" id="senhaAtual" class="input-campo" required />
+      </div>
+
+      <div class="campo">
+        <label for="senhaNova">Nova senha</label>
+        <input type="password" id="senhaNova" class="input-campo" required />
+      </div>
+
+      <div class="campo">
+        <label for="senhaNovaConfirma">Confirmar nova senha</label>
+        <input type="password" id="senhaNovaConfirma" class="input-campo" required />
+      </div>
+
+      <button type="submit" class="btn-enviar">
+        Atualizar senha
+      </button>
+      <button type="button" id="btnVoltarLogin" class="btn-link">
+        Voltar ao login
+      </button>
+    </form>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+<script src="auth.js"></script>
+<script src="tracking.js"></script>
+<script src="security-utils.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

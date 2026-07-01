@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestões - Águia Sistemas</title>
+    <link rel="stylesheet" href="sugestoes.css">
+    <script src="tema.js"></script>
+    <script>aplicarTemaSalvo();</script>
+</head>
+<body>
+
+<div class="top-bar">
+    <h1 class="titulo-topo">Águia Sistemas</h1>
+    <div class="glow-effect"></div>
+</div>
+
+<div class="container">
+    <div class="header-section">
+        <h2 class="titulo-principal">Sugestões</h2>
+    </div>
+
+    <div class="conteudo-grid">
+        <!-- Formulário -->
+        <form id="formSugestoes" class="card-form" autocomplete="off">
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" class="input-campo" placeholder="Digite seu nome" maxlength="15" required>
+            </div>
+
+            <div class="campo">
+                <label for="setor">Setor</label>
+                <input type="text" id="setor" name="setor" class="input-campo" placeholder="Informe seu setor" maxlength="15" required>
+            </div>
+
+            <div class="campo">
+                <label for="comentarios">Comentários</label>
+                <textarea id="comentarios" name="comentarios" class="input-campo textarea-campo" maxlength="500" placeholder="Escreva seus comentários aqui..."></textarea>
+                <p id="contador" class="contador-texto">0 / 500 caracteres</p>
+            </div>
+
+            <div class="campo campo-avaliacao">
+                <label for="avaliacao">Avaliação do site (0 a 10)</label>
+                <input type="number" id="avaliacao" name="avaliacao" class="input-campo input-avaliacao" min="0" max="10" placeholder="0-10">
+            </div>
+
+            <button type="submit" class="btn-enviar">
+                <span>Enviar Sugestão</span>
+                <span class="icon-send">📨</span>
+            </button>
+        </form>
+
+        <!-- Sidebar informativa -->
+        <aside class="card-info">
+            <h3 class="info-titulo">Sua opinião importa!</h3>
+            <p class="info-texto">
+                Tem uma <strong>sugestão de melhoria</strong> ou quer registrar uma <strong>reclamação</strong>?
+                Use o formulário ao lado e clique em <em>Enviar Sugestão</em>.
+                Sua participação ajuda o sistema a evoluir.
+            </p>
+            <img src="https://intralogexpo.com.br/wp-content/webp-express/webp-images/uploads/2024/02/INTRALOG-LOGOS.png.webp"
+                 alt="Logo Águia Sistemas" class="logo-info">
+        </aside>
+    </div>
+</div>
+
+<!-- Toast de notificação -->
+<div id="toast" class="toast"></div>
+
+<script src="sugestoes.js"></script>
+
+</body>
+</html>

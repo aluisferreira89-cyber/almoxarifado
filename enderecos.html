@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Endereços - Águia Sistemas</title>
+    <link rel="stylesheet" href="enderecos.css">
+</head>
+<body>
+
+<div class="top-bar">
+    <h1 class="titulo-topo">Águia Sistemas</h1>
+    <button type="button" class="btn-sair" id="btnSair" title="Encerrar sessão">🚪 Sair</button>
+    <div class="glow-effect"></div>
+</div>
+
+<div class="container">
+    <div class="header-section">
+        <h2 class="titulo-principal">Pesquisa de Endereços</h2>
+    </div>
+
+    <!-- Formulário de pesquisa -->
+    <form id="pesquisaForm" class="forma-pesquisa">
+        <div class="input-group">
+            <input type="text" id="pesquisa" class="input-pesquisa" 
+                   placeholder="Digite o item ou endereço..." 
+                   autocomplete="off">
+            <button type="submit" class="btn-pesquisar">
+                <span>Pesquisar</span>
+                <span class="icon-search"></span>
+            </button>
+        </div>
+    </form>
+
+    <!-- Aba de filtros aprimorada -->
+    <div class="filtros-secao" id="filtrosSeccao" onmouseleave="ocultarFiltros()">
+        <div class="filtros-header" onmouseover="mostrarFiltros()">
+            <span class="filtros-titulo">Filtros Avançados</span>
+            <span class="filtros-arrow">▼</span>
+        </div>
+        <div id="filtrosBox" class="filtros-box" onmouseover="mostrarFiltros()">
+            <div class="filtros-conteudo">
+                <div class="filtro-grupo">
+                    <label class="filtro-label">
+                        <input type="checkbox" id="chkItem" class="filtro-check">
+                        <span>Apenas o item pesquisado</span>
+                    </label>
+                    <label class="filtro-label">
+                        <input type="checkbox" id="chkEndereco" class="filtro-check">
+                        <span>Itens no mesmo endereço</span>
+                    </label>
+                </div>
+                <div class="filtro-grupo">
+                    <label class="filtro-label">
+                        <input type="checkbox" id="chkEstabelecimentos" class="filtro-check">
+                        <span>Diferentes estabelecimentos</span>
+                    </label>
+                    <label class="filtro-label">
+                        <input type="checkbox" id="chkTodos" class="filtro-check">
+                        <span>Todos os resultados</span>
+                    </label>
+                </div>
+                <div class="filtro-grupo">
+                    <label class="filtro-label">
+                        <input type="checkbox" id="chkTabela" class="filtro-check">
+                        <span>Mostrar em tabela única</span>
+                    </label>
+                </div>
+                <button type="button" id="btnAtualizar" class="btn-atualizar">
+                     Atualizar Resultados
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensagem de carregamento -->
+    <div id="loadingMsg" class="loading-container">
+        <div class="spinner"></div>
+        <p>🔄 Carregando resultados incríveis...</p>
+    </div>
+
+    <!-- Botões de controle (sempre visíveis) -->
+    <div class="tabela-controles" id="tabelaControles">
+        <button type="button" class="btn-acao btn-copiar" onclick="copiarTabela()">
+            📋 Copiar Tabela
+        </button>
+        <button type="button" class="btn-acao btn-baixa-estoque" onclick="window.location.href='baixa.html'">
+            📝 Pedido
+        </button>
+        <span class="info-resultados" id="infoResultados"></span>
+    </div>
+
+    <!-- Tabela de resultados -->
+    <div class="tabela-container">
+        <table id="tabelaResultados" class="tabela-resultados">
+            <thead>
+                <tr>
+                    <th class="th-item">Item</th>
+                    <th class="th-endereco">Endereço</th>
+                    <th class="th-descricao">Descrição</th>
+                    <th class="th-quantidade">Quantidade</th>
+                    <th class="th-estabelecimento">Estabelecimento</th>
+                    <th class="th-acoes">Ações</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- Toast de notificação -->
+<div id="toast" class="toast"></div>
+
+<script src="auth.js"></script>
+<script src="tracking.js"></script>
+<script src="security-utils.js"></script>
+<script>protegerPagina(); iniciarRastreamento();</script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixa de Estoque - Águia Sistemas</title>
+    <link rel="stylesheet" href="baixa.css">
+</head>
+<body>
+
+<div class="top-bar">
+    <h1 class="titulo-topo">Águia Sistemas</h1>
+    <button type="button" class="btn-sair" id="btnSair" title="Encerrar sessão">🚪 Sair</button>
+    <div class="glow-effect"></div>
+</div>
+
+<div class="container">
+    <div class="header-section">
+        <h2 class="titulo-principal">Baixa de Estoque</h2>
+    </div>
+
+    <!-- Mensagem de carregamento da base -->
+    <div id="loadingMsg" class="loading-container">
+        <div class="spinner"></div>
+        <p>Carregando base de dados...</p>
+    </div>
+
+    <div class="baixa-card">
+        <p class="baixa-instrucao">
+            Cole abaixo as colunas <strong>Item</strong>, <strong>Descrição</strong> e
+            <strong>Quantidade pedida</strong>, copiadas diretamente da sua planilha
+            (Excel ou Google Sheets), nesta ordem. O sistema vai localizar cada item
+            na base e completar automaticamente o <strong>Endereço</strong> e o
+            <strong>Estabelecimento</strong>.
+        </p>
+
+        <textarea id="baixaTextarea" class="baixa-textarea"
+            placeholder="Cole aqui (Ctrl+V) as linhas copiadas da planilha de pedido..."></textarea>
+
+        <button type="button" class="btn-processar-baixa" id="btnProcessarColagem">
+             Processar colagem
+        </button>
+    </div>
+
+    <div id="baixaResultadoContainer" class="baixa-resultado-container"></div>
+
+    <button type="button" class="btn-confirmar-baixa" id="btnConfirmarBaixa" style="display:none;">
+         Copiar e Dar Baixa
+    </button>
+</div>
+
+<!-- Toast de notificação -->
+<div id="toast" class="toast"></div>
+
+<script src="auth.js"></script>
+<script src="tracking.js"></script>
+<script src="security-utils.js"></script>
+<script>protegerPagina(); iniciarRastreamento();</script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="baixa.js"></script>
+</body>
+</html>

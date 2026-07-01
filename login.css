@@ -1,0 +1,499 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #00c3ff;
+    --cor-secundaria: #00ffcc;
+    --cor-escura: #0a0e27;
+    --cor-fundo: #1a1a2e;
+    --cor-sucesso: #4CAF50;
+    --cor-aviso: #ff9800;
+    --cor-erro: #ff5252;
+    --transicao: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+    color: #fff;
+    background: linear-gradient(-45deg, #0a0e27, #1a1a2e, #00c3ff, #0099cc);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.2); opacity: 0.2; }
+}
+
+/* ===== BARRA SUPERIOR ===== */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 14, 39, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 8px 20px;
+    box-shadow: 0 4px 30px rgba(0, 195, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    z-index: 1000;
+    border-bottom: 2px solid var(--cor-primaria);
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+.btn-voltar {
+    position: absolute;
+    left: 120px;
+    padding: 10px 16px;
+    background: rgba(0, 195, 255, 0.2);
+    border: 1px solid var(--cor-primaria);
+    border-radius: 8px;
+    color: var(--cor-secundaria);
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transicao);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    z-index: 999;
+}
+
+.btn-voltar:hover {
+    background: rgba(0, 195, 255, 0.4);
+    border-color: var(--cor-secundaria);
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(0, 195, 255, 0.3);
+}
+
+.btn-voltar:active {
+    transform: translateX(-1px);
+}
+
+.btn-voltar span {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* ===== LOGO CONTAINER ===== */
+.logo-container {
+    position: absolute;
+    left: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 45px;
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--cor-primaria));
+    transition: var(--transicao);
+}
+
+.logo:hover {
+    filter: brightness(0) invert(1) drop-shadow(0 0 15px var(--cor-secundaria));
+    transform: scale(1.05);
+}
+
+/* ===== TÍTULO TOPO ===== */
+.titulo-topo {
+    font-size: 28px;
+    color: var(--cor-secundaria);
+    text-shadow: 0 0 20px var(--cor-primaria);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* ===== GLOW EFFECT ===== */
+.glow-effect {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--cor-primaria), transparent);
+    opacity: 0.1;
+    border-radius: 50%;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.container {
+    max-width: 1200px;
+    margin: 90px auto 40px;
+    padding: 0 20px;
+}
+
+.container-login {
+    max-width: 480px;
+}
+
+/* ===== HEADER SECTION ===== */
+.header-section {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeInDown 0.6s ease;
+}
+
+.titulo-principal {
+    font-size: 42px;
+    color: var(--cor-secundaria);
+    text-shadow: 0 0 20px var(--cor-primaria);
+    letter-spacing: 1px;
+}
+
+/* ===== CARD DO FORMULÁRIO ===== */
+.card-form {
+    background: rgba(10, 14, 39, 0.7);
+    border: 1px solid rgba(0, 195, 255, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 195, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    animation: slideInUp 0.6s ease;
+}
+
+.card-oculto {
+    display: none;
+}
+
+.campo {
+    margin-bottom: 14px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--cor-secundaria);
+    text-shadow: 0 0 8px rgba(0, 195, 255, 0.3);
+    font-size: 14px;
+}
+
+.input-campo {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 195, 255, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    color: #222;
+    font-size: 15px;
+    outline: none;
+    transition: var(--transicao);
+    font-family: inherit;
+}
+
+.input-campo:focus {
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+    transform: translateY(-1px);
+}
+
+.input-campo::placeholder {
+    color: #999;
+}
+
+/* ===== WRAPPER DO CAMPO DE SENHA COM BOTÃO OLHO ===== */
+.campo-senha-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-senha {
+    padding-right: 46px;
+}
+
+.btn-olho {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 6px;
+    transition: var(--transicao);
+}
+
+.btn-olho:hover {
+    transform: scale(1.15);
+}
+
+/* ===== CHECKBOX LEMBRAR USUÁRIO ===== */
+.campo-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.checkbox-lembrar {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--cor-primaria);
+}
+
+/* ===== INFO DE TENTATIVAS RESTANTES ===== */
+.info-tentativas {
+    font-size: 13px;
+    color: var(--cor-aviso);
+    text-align: center;
+    margin-bottom: 10px;
+    min-height: 16px;
+}
+
+.info-tentativas.bloqueado {
+    color: var(--cor-erro);
+    font-weight: bold;
+}
+
+.btn-enviar {
+    margin-top: 10px;
+    padding: 14px 30px;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transicao);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(0, 195, 255, 0.2);
+}
+
+.btn-enviar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 255, 204, 0.4);
+    border-color: var(--cor-secundaria);
+}
+
+.btn-enviar:active {
+    transform: translateY(-1px);
+}
+
+.btn-enviar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.icon-send {
+    font-size: 18px;
+}
+
+/* ===== LOADER (SPINNER) NO BOTÃO ===== */
+.loader {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-top-color: #000;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+.btn-enviar.carregando .loader {
+    display: inline-block;
+}
+
+.btn-enviar.carregando .icon-send {
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.btn-link {
+    margin-top: 14px;
+    background: none;
+    border: none;
+    color: var(--cor-primaria);
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: var(--transicao);
+    align-self: center;
+}
+
+.btn-link:hover {
+    color: var(--cor-secundaria);
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cor-escura);
+    color: white;
+    padding: 16px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    z-index: 2000;
+    transition: var(--transicao);
+    border-left: 4px solid var(--cor-sucesso);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 90vw;
+    text-align: center;
+}
+
+.toast.mostrar {
+    bottom: 30px;
+}
+
+.toast-success {
+    border-left-color: var(--cor-sucesso);
+}
+
+.toast-error {
+    border-left-color: var(--cor-erro);
+}
+
+.toast-warning {
+    border-left-color: var(--cor-aviso);
+}
+
+.toast-info {
+    border-left-color: var(--cor-primaria);
+}
+
+/* ===== RESPONSIVIDADE TABLET ===== */
+@media (max-width: 768px) {
+    .titulo-principal {
+        font-size: 28px;
+    }
+
+    .top-bar {
+        height: 60px;
+    }
+
+    .container {
+        margin-top: 70px;
+    }
+
+    .titulo-topo {
+        font-size: 20px;
+    }
+
+    .btn-voltar {
+        left: 80px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .btn-voltar span {
+        font-size: 16px;
+    }
+
+    .logo {
+        height: 40px;
+    }
+}
+
+/* ===== RESPONSIVIDADE MOBILE ===== */
+@media (max-width: 480px) {
+    .titulo-principal {
+        font-size: 22px;
+    }
+
+    .btn-voltar {
+        left: 60px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .btn-voltar span {
+        display: none;
+    }
+
+    .btn-voltar::before {
+        content: "←";
+        font-size: 14px;
+    }
+
+    .logo {
+        height: 35px;
+    }
+
+    .titulo-topo {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    .top-bar {
+        height: 55px;
+    }
+
+    .container {
+        margin-top: 65px;
+        padding: 0 10px;
+    }
+
+    .card-form {
+        padding: 20px;
+    }
+}
+
+/* ===== RESPEITO A REDUÇÃO DE MOVIMENTO ===== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
